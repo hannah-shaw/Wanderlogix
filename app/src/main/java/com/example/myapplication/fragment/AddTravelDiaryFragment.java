@@ -1,27 +1,27 @@
-package com.example.myapplication;
+package com.example.myapplication.fragment;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 import android.widget.Toast;
 import android.text.TextUtils;
 import android.widget.Button;
-import android.widget.Toast;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
-import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.example.myapplication.databinding.AddTravelDiaryFragmentBinding;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Set;
 
-public class AddTravelDiaryActivity extends AppCompatActivity {
+public class AddTravelDiaryFragment extends Fragment {
     private EditText titleEditText;
     private EditText descriptionEditText;
     private EditText locationEditText;
@@ -33,19 +33,21 @@ public class AddTravelDiaryActivity extends AppCompatActivity {
     private TextView satisfactionScoreTextView;
     private RadioGroup weatherRadioGroup;
 
+    private AddTravelDiaryFragmentBinding binding;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_travel_diary);
-        titleEditText = findViewById(R.id.title_edittext);
-        descriptionEditText = findViewById(R.id.description_edittext);
-        locationEditText = findViewById(R.id.location_edittext);
-        expenseEditText = findViewById(R.id.expense_edittext);
-        datePicker = findViewById(R.id.date_picker);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+        binding = AddTravelDiaryFragmentBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+        titleEditText = binding.titleEdittext;
+        descriptionEditText = binding.descriptionEdittext;
+        locationEditText = binding.locationEdittext;
+        expenseEditText = binding.expenseEdittext;
+        datePicker = binding.datePicker;
         //categorySpinner = findViewById(R.id.category_spinner);
-        satisfactionSeekBar = findViewById(R.id.satisfaction_slider);
-        satisfactionScoreTextView = findViewById(R.id.satisfaction_score_textview);
-        weatherRadioGroup = findViewById(R.id.weather_radiogroup);
+        satisfactionSeekBar = binding.satisfactionSlider;
+        satisfactionScoreTextView = binding.satisfactionScoreTextview;
+        weatherRadioGroup = binding.weatherRadiogroup;
 
         // Set up the category spinner category_array
        /* String[] categories = getResources().getStringArray(R.array.category_array);
@@ -72,7 +74,7 @@ public class AddTravelDiaryActivity extends AppCompatActivity {
         });
 
          //Set up the save button
-        Button saveButton = findViewById(R.id.save_button);
+        Button saveButton = binding.saveButton;
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,7 +116,7 @@ public class AddTravelDiaryActivity extends AppCompatActivity {
 
                 // Check if weather is selected
                 if (weatherRadioGroup.getCheckedRadioButtonId() == -1) {
-                    Toast.makeText(AddTravelDiaryActivity.this, "Please select weather.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Please select weather.", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -124,9 +126,10 @@ public class AddTravelDiaryActivity extends AppCompatActivity {
 
             }
         });
+        return view;
     }
     private void toastMsg(String msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
     }
 
     public void onSaveButtonClicked(View view) {
@@ -139,7 +142,7 @@ public class AddTravelDiaryActivity extends AppCompatActivity {
         //String satisfaction = satisfactionScoreTextView.getText().toString();
         int satisfaction = satisfactionSeekBar.getProgress();
         int weatherId = weatherRadioGroup.getCheckedRadioButtonId();
-        RadioButton weatherRadioButton = findViewById(weatherId);
+        RadioButton weatherRadioButton = view.findViewById(weatherId);
         String weather = weatherRadioButton.getText().toString();
 
         // Get the date from the date picker
@@ -177,9 +180,12 @@ public class AddTravelDiaryActivity extends AppCompatActivity {
        // categorySpinner.setSelection(0);
         satisfactionSeekBar.setProgress(5);
         satisfactionScoreTextView.setText("5");
-        RadioButton sunnyRadioButton = findViewById(R.id.sunny_radiobutton);
+        RadioButton sunnyRadioButton = binding.sunnyRadiobutton;
         weatherRadioGroup.check(sunnyRadioButton.getId());
     }
-
-
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
 }
