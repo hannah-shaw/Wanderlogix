@@ -24,6 +24,20 @@ public class LogixContentFragment extends Fragment {
         this.image=img;
         this.content=content;
     }
+    public LogixContentFragment(){
+    }
+
+    @Override
+    public void onCreate(Bundle arg){
+        super.onCreate(arg);
+        if(getArguments()!=null){
+            this.image=getArguments().getParcelable("image");
+            this.content=getArguments().getString("content");
+        }else{
+        this.image=null;
+        this.content="";
+        }
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the View for this fragment using the binding
