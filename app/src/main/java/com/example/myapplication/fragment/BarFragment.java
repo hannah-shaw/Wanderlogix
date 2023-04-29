@@ -42,9 +42,10 @@ public class BarFragment extends Fragment {
                 com.github.mikephil.charting.formatter.IndexAxisValueFormatter(xAxisValues));
         BarData barData = new BarData(barDataSet);
         binding.barChart.setData(barData);
+        binding.barChart.setScaleEnabled(false);
+        binding.barChart.getDescription().setEnabled(false);
         barData.setBarWidth(1.0f);
         binding.barChart.setVisibility(View.VISIBLE);
-        binding.barChart.animateY(10);
         //refresh the chart
         binding.barChart.invalidate();
 

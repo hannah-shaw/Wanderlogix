@@ -58,7 +58,7 @@ public class PieFragment extends Fragment {
         binding.pieChart.setTransparentCircleAlpha(50);
         binding.pieChart.setRotationAngle(20);
         binding.pieChart.setRotationEnabled(false);
-
+        binding.pieChart.getDescription().setEnabled(false);
         binding.pieChart.setVisibility(View.VISIBLE);
         //refresh the chart
         binding.pieChart.invalidate();
