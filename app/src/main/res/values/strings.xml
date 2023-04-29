@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Wanderlogix</string>
+    <string name="app_name">My Application</string>
+    <string name="shr_hint_username">Email</string>
+    <string name="shr_hint_password">Password</string>
 </resources>
