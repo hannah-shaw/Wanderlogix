@@ -8,8 +8,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,7 +17,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Register extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +67,8 @@ public class Register extends AppCompatActivity {
                         if(task.isSuccessful()) {
                             String msg = "Registration Successful";
                             toastMsg(msg);
-                            startActivity(new Intent(Register.this,
-                                    Login.class));
+                            startActivity(new Intent(RegisterActivity.this,
+                                    LoginActivity.class));
                         }else {
                             String msg = "Registration Unsuccessful";
                             toastMsg(msg);
