@@ -6,10 +6,10 @@
 
     <fragment
         android:id="@+id/nav_home_fragment"
-        android:name="com.example.wanderlogix.fragment.HomeFragment"
+        android:name="com.example.myapplication.fragment.HomeFragment"
         android:label="HomeFragment" />
     <fragment
         android:id="@+id/logixContentFragment"
-        android:name="com.example.wanderlogix.fragment.LogixContentFragment"
+        android:name="com.example.myapplication.fragment.LogixContentFragment"
         android:label="LogixContentFragment" />
 </navigation>

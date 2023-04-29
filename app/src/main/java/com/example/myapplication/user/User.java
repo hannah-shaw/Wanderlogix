@@ -1,4 +1,4 @@
-package com.example.wanderlogix.user;
+package com.example.myapplication.user;
 
 public class User {
     public static User user=new User();

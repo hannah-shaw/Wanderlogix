@@ -1,4 +1,4 @@
-package com.example.wanderlogix.fragment;
+package com.example.myapplication.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,10 +10,8 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.wanderlogix.databinding.HomeFragmentBinding;
-import com.example.wanderlogix.logix.LogixDatabase;
-
-import java.util.ArrayList;
+import com.example.myapplication.databinding.HomeFragmentBinding;
+import com.example.myapplication.logix.LogixDatabase;
 
 public class HomeFragment extends Fragment {
     private HomeFragmentBinding binding;

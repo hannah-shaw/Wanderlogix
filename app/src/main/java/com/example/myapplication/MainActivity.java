@@ -1,4 +1,4 @@
-package com.example.wanderlogix;
+package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -10,7 +10,7 @@ import androidx.navigation.ui.NavigationUI;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.wanderlogix.databinding.ActivityMainBinding;
+import com.example.myapplication.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;

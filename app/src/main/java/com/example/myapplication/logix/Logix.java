@@ -1,10 +1,6 @@
-package com.example.wanderlogix.logix;
+package com.example.myapplication.logix;
 
 import android.graphics.Bitmap;
-
-import com.example.wanderlogix.user.User;
-
-import java.util.List;
 
 public class Logix {
     public String content;

@@ -1,4 +1,4 @@
-package com.example.wanderlogix;
+package com.example.myapplication;
 
 import android.content.Context;
 

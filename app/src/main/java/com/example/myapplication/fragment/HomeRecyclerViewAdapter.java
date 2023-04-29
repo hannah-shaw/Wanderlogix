@@ -1,4 +1,4 @@
-package com.example.wanderlogix.fragment;
+package com.example.myapplication.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -6,19 +6,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.wanderlogix.R;
-import com.example.wanderlogix.databinding.HomeCardLayoutBinding;
-import com.example.wanderlogix.logix.Logix;
-import com.example.wanderlogix.logix.LogixDatabase;
-
-import java.util.List;
+import com.example.myapplication.R;
+import com.example.myapplication.databinding.HomeCardLayoutBinding;
+import com.example.myapplication.logix.Logix;
+import com.example.myapplication.logix.LogixDatabase;
 
 public class HomeRecyclerViewAdapter extends RecyclerView.Adapter <HomeRecyclerViewAdapter.ViewHolder>{
 

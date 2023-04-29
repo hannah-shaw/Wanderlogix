@@ -1,16 +1,11 @@
-package com.example.wanderlogix.logix;
+package com.example.myapplication.logix;
 
 
-import static java.security.AccessController.getContext;
-
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-import androidx.appcompat.graphics.drawable.DrawableContainerCompat;
-
-import com.example.wanderlogix.R;
-import com.example.wanderlogix.user.User;
+import com.example.myapplication.R;
+import com.example.myapplication.user.User;
 
 import java.util.ArrayList;
 import java.util.List;

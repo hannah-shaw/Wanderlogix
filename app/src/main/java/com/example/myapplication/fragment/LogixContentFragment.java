@@ -1,4 +1,4 @@
-package com.example.wanderlogix.fragment;
+package com.example.myapplication.fragment;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -6,15 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 
-import com.example.wanderlogix.databinding.LogixContentFragmentBinding;
+import com.example.myapplication.databinding.LogixContentFragmentBinding;
 
 public class LogixContentFragment extends Fragment {
     LogixContentFragmentBinding binding;
