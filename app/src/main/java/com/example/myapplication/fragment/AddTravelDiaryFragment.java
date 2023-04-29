@@ -34,6 +34,7 @@ public class AddTravelDiaryFragment extends Fragment {
     private RadioGroup weatherRadioGroup;
 
     private AddTravelDiaryFragmentBinding binding;
+    //private AddFragmentBinding addBinding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -124,15 +125,58 @@ public class AddTravelDiaryFragment extends Fragment {
                 //String category = categorySpinner.getSelectedItem().toString();
                 //int satisfactionScore = satisfactionSeekBar.getProgress();
 
+                // Get the user input
+                String title = titleEditText.getText().toString().trim();
+                String description = descriptionEditText.getText().toString().trim();
+                String location = locationEditText.getText().toString().trim();
+                double expense = Double.parseDouble(expenseEditText.getText().toString());
+                //int categoryIndex = categorySpinner.getSelectedItemPosition();
+                //String satisfaction = satisfactionScoreTextView.getText().toString();
+                int satisfaction = satisfactionSeekBar.getProgress();
+                int weatherId = weatherRadioGroup.getCheckedRadioButtonId();
+                RadioButton weatherRadioButton = view.findViewById(weatherId);
+                String weather = weatherRadioButton.getText().toString();
+
+                // Get the date from the date picker
+                int day = datePicker.getDayOfMonth();
+                int month = datePicker.getMonth();
+                int year = datePicker.getYear();
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(year, month, day);
+                Date date = calendar.getTime();
+                SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+                String dateString = sdf.format(date);
+
+                // Do something with the user input, such as save it to a database
+
             }
         });
+
+
+        binding.clearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //addBinding.editText.setText("");
+                titleEditText.setText("");
+                descriptionEditText.setText("");
+                locationEditText.setText("");
+                expenseEditText.setText("");
+                // categorySpinner.setSelection(0);
+                satisfactionSeekBar.setProgress(5);
+                satisfactionScoreTextView.setText("5");
+                RadioButton sunnyRadioButton = binding.sunnyRadiobutton;
+                weatherRadioGroup.check(sunnyRadioButton.getId());
+
+            }
+        });
+
         return view;
     }
     private void toastMsg(String msg) {
         Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
     }
 
-    public void onSaveButtonClicked(View view) {
+    /*public void onSaveButtonClicked(View view) {
         // Get the user input
         String title = titleEditText.getText().toString().trim();
         String description = descriptionEditText.getText().toString().trim();
@@ -170,9 +214,11 @@ public class AddTravelDiaryFragment extends Fragment {
         }
 
         // Do something with the user input, such as save it to a database
-    }
+    }*/
 
+    /*
     public void onClearButtonClicked(View view) {
+
         titleEditText.setText("");
         descriptionEditText.setText("");
         locationEditText.setText("");
@@ -182,7 +228,10 @@ public class AddTravelDiaryFragment extends Fragment {
         satisfactionScoreTextView.setText("5");
         RadioButton sunnyRadioButton = binding.sunnyRadiobutton;
         weatherRadioGroup.check(sunnyRadioButton.getId());
+
     }
+
+     */
     @Override
     public void onDestroyView() {
         super.onDestroyView();
