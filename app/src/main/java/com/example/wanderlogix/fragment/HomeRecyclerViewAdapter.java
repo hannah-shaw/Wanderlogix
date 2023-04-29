@@ -1,5 +1,6 @@
 package com.example.wanderlogix.fragment;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,19 +45,22 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter <HomeRecyclerV
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        replaceFragment(new LogixContentFragment(unit.image, unit.content),v);
+                        Bundle arg=new Bundle();
+                        arg.putParcelable("image",unit.image);
+                        arg.putString("content",unit.content);
+                        replaceFragment(arg,v);
                     }
                 }
         );
     }
 
-    private void replaceFragment(Fragment nextFragment, View view) {
+    private void replaceFragment(Bundle arg, View view) {
         FragmentActivity fragmentActivity = (FragmentActivity) view.getContext();
         FragmentManager fragmentManager = fragmentActivity.getSupportFragmentManager();
         NavHostFragment navHostFragment = (NavHostFragment)
                 fragmentManager.findFragmentById(R.id.nav_host_fragment);
         NavController navController = navHostFragment.getNavController();
-        navController.navigate(R.id.logixContentFragment);
+        navController.navigate(R.id.logixContentFragment, arg);
     }
 
     @Override
