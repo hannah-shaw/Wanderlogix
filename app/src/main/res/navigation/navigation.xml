@@ -16,4 +16,8 @@
         android:id="@+id/add_travel_diary_fragment"
         android:name="com.example.myapplication.fragment.AddTravelDiaryFragment"
         android:label="AddTravelDiaryFragment" />
+    <fragment
+        android:id="@+id/report_fragment"
+        android:name="com.example.myapplication.fragment.ReportFragment"
+        android:label="ReportFragment" />
 </navigation>
