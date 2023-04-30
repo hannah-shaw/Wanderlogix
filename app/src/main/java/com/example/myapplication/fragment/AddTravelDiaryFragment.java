@@ -1,6 +1,10 @@
 package com.example.myapplication.fragment;
 
 import androidx.fragment.app.Fragment;
+
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -15,6 +19,8 @@ import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.example.myapplication.MainActivity;
+import com.example.myapplication.SelectMapActivity;
 import com.example.myapplication.databinding.AddTravelDiaryFragmentBinding;
 
 import java.text.SimpleDateFormat;
@@ -151,7 +157,25 @@ public class AddTravelDiaryFragment extends Fragment {
 
             }
         });
+        binding.mapbutton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                String location=locationEditText.getText().toString();
+                if(location.equals("")){
+                    Toast.makeText(getContext(), "type any location",Toast.LENGTH_SHORT).show();
+                }else{
+                    SharedPreferences preferences = requireContext().getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("location", location);
+                    editor.apply();
+                    Intent intent = new Intent(getContext(), SelectMapActivity.class);
+                    //intent.putExtra("location", location);
+                    startActivity(intent);
 
+                }
+                // 跳转到另一个名为ButtonActivity的界面
+            }
+        });
 
         binding.clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
