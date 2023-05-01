@@ -242,7 +242,7 @@ public class AddTravelDiaryFragment extends Fragment {
                     allCustomers = allCustomers +
                             System.getProperty("line.separator") + customerDetails;
                 }
-                binding.textViewRead.setText("All data: " + allCustomers);
+                //binding.textViewRead.setText("All data: " + allCustomers);
             }
         });
 

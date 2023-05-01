@@ -35,17 +35,6 @@ public class HomeFragment extends Fragment {
 
         diaryViewModel= ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(DiaryViewModel.class);
 
-        //Test simulated data
-        DiaryEntry c=new DiaryEntry();
-        c.title="Test title";
-        c.description="Test description";
-        c.date="Test content";
-        diaryViewModel.insert(c);
-        c.title="Test1 title";
-        c.description="Test1 description";
-        c.date="Test1 content";
-        diaryViewModel.insert(c);
-
         LiveData<List<Integer>> diaryList=diaryViewModel.getAllId();
         adapter = new HomeRecyclerViewAdapter(diaryViewModel,diaryList.getValue());
         //this just creates a line divider between rows
