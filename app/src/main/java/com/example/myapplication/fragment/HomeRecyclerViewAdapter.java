@@ -1,5 +1,6 @@
 package com.example.myapplication.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,20 +9,28 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.LiveData;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.databinding.HomeCardLayoutBinding;
+import com.example.myapplication.entity.DiaryEntry;
 import com.example.myapplication.logix.Logix;
 import com.example.myapplication.logix.LogixDatabase;
+import com.example.myapplication.repository.DiaryRepository;
+import com.example.myapplication.viewmodel.DiaryViewModel;
+
+import java.util.List;
 
 public class HomeRecyclerViewAdapter extends RecyclerView.Adapter <HomeRecyclerViewAdapter.ViewHolder>{
 
-    LogixDatabase database;
-    public HomeRecyclerViewAdapter(LogixDatabase db) {
-        this.database = db;
+    private DiaryViewModel diaryViewModel;
+    private List<Integer> diaryListId;
+    public HomeRecyclerViewAdapter(DiaryViewModel diaryViewModel, List<Integer> diaryListId) {
+        this.diaryViewModel=diaryViewModel;
+        this.diaryListId=diaryListId;
     }
 
     @Override
@@ -34,17 +43,19 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter <HomeRecyclerV
     // this method binds the view holder created with data that will be displayed
     @Override
     public void onBindViewHolder(@NonNull HomeRecyclerViewAdapter.ViewHolder viewHolder, int position) {
-        final Logix unit = database.getLogix(position);
-        viewHolder.binding.logixTiltle.setText(unit.title);
-        viewHolder.binding.logixTitleImage.setImageBitmap(unit.titleImgae);
-        viewHolder.binding.logixIntroduce.setText(unit.Introduce);
+        DiaryEntry diary;
+        Integer idDiary=diaryListId.get(position);
+        diary=diaryViewModel.findDiarybyId(idDiary);
+        viewHolder.binding.logixTiltle.setText(diary.title);
+        //viewHolder.binding.logixTitleImage.setImageBitmap(unit.titleImgae);
+        viewHolder.binding.logixIntroduce.setText(diary.description);
         viewHolder.binding.cardView.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Bundle arg=new Bundle();
-                        arg.putParcelable("image",unit.image);
-                        arg.putString("content",unit.content);
+                        //arg.putParcelable("image",unit.image);
+                        arg.putString("content",diary.date);
                         replaceFragment(arg,v);
                     }
                 }
@@ -62,7 +73,8 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter <HomeRecyclerV
 
     @Override
     public int getItemCount() {
-        return database.getCount();
+        if(diaryListId==null) return 0;
+        return diaryListId.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

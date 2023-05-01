@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.myapplication.databinding.ActivityMainBinding;
+import com.example.myapplication.entity.DiaryEntry;
+import com.example.myapplication.repository.DiaryRepository;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;

@@ -25,6 +25,7 @@ public abstract class DiaryDatabase extends RoomDatabase {
             INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             DiaryDatabase.class, "DiaryDatabase")
                     .fallbackToDestructiveMigration()
+                    .allowMainThreadQueries()
                     .build();
         }
         return INSTANCE; }

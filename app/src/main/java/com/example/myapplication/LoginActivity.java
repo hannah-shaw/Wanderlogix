@@ -45,8 +45,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Just for test
-//                startActivity(new Intent(LoginActivity.this,
-//                        MainActivity.class));
+                startActivity(new Intent(LoginActivity.this,
+                        MainActivity.class));
 
                 String txt_Email = emailEditText.getText().toString();
                 String txt_Pwd = passwordEditText.getText().toString();
