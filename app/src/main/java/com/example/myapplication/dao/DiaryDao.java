@@ -35,7 +35,7 @@ public interface DiaryDao {
     List<String> getLocation();
 
     @Query("SELECT id FROM diary_entries")
-    List<Integer> getId();
+    LiveData<List<Integer>> getId();
 
 
 }

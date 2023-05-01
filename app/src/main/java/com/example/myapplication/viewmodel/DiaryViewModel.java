@@ -25,6 +25,12 @@ public class DiaryViewModel  extends AndroidViewModel {
     public void insert(DiaryEntry diaryEntry) {
         dRepository.insert(diaryEntry);
     }
+    public LiveData<List<Integer>> getAllId(){
+        return dRepository.getAllId();
+    }
+    public DiaryEntry findDiarybyId(int diaryId){
+        return dRepository.findDiarybyId(diaryId);
+    }
 
 
 }

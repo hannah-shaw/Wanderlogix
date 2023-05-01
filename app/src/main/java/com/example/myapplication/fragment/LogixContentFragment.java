@@ -27,7 +27,7 @@ public class LogixContentFragment extends Fragment {
     public void onCreate(Bundle arg){
         super.onCreate(arg);
         if(getArguments()!=null){
-            this.image=getArguments().getParcelable("image");
+            //this.image=getArguments().getParcelable("image");
             this.content=getArguments().getString("content");
         }else{
         this.image=null;
@@ -41,9 +41,9 @@ public class LogixContentFragment extends Fragment {
         View view = binding.getRoot();
         TextView textView=new TextView(getActivity());
         textView.setText(this.content);
-        ImageView imageView= new ImageView(getActivity());
-        imageView.setImageBitmap(image);
-        binding.linearLayout.addView(imageView);
+        //ImageView imageView= new ImageView(getActivity());
+        //imageView.setImageBitmap(image);
+        //binding.linearLayout.addView(imageView);
         binding.linearLayout.addView(textView);
         return view;
     }
