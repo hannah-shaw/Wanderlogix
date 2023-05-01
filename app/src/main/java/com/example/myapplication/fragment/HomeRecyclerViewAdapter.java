@@ -1,6 +1,5 @@
 package com.example.myapplication.fragment;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +8,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.LiveData;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,9 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.R;
 import com.example.myapplication.databinding.HomeCardLayoutBinding;
 import com.example.myapplication.entity.DiaryEntry;
-import com.example.myapplication.logix.Logix;
-import com.example.myapplication.logix.LogixDatabase;
-import com.example.myapplication.repository.DiaryRepository;
 import com.example.myapplication.viewmodel.DiaryViewModel;
 
 import java.util.List;

@@ -15,9 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.databinding.HomeFragmentBinding;
-import com.example.myapplication.entity.DiaryEntry;
-import com.example.myapplication.logix.LogixDatabase;
-import com.example.myapplication.repository.DiaryRepository;
 import com.example.myapplication.viewmodel.DiaryViewModel;
 
 import java.util.List;
