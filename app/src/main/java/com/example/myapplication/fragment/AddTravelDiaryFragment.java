@@ -1,10 +1,17 @@
 package com.example.myapplication.fragment;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.room.Database;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -21,11 +28,16 @@ import android.widget.TextView;
 
 import com.example.myapplication.MainActivity;
 import com.example.myapplication.SelectMapActivity;
+import com.example.myapplication.database.DiaryDatabase;
 import com.example.myapplication.databinding.AddTravelDiaryFragmentBinding;
+import com.example.myapplication.entity.DiaryEntry;
+import com.example.myapplication.repository.DiaryRepository;
+import com.example.myapplication.viewmodel.DiaryViewModel;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class AddTravelDiaryFragment extends Fragment {
     private EditText titleEditText;
@@ -40,12 +52,20 @@ public class AddTravelDiaryFragment extends Fragment {
     private RadioGroup weatherRadioGroup;
 
     private AddTravelDiaryFragmentBinding binding;
+
     //private AddFragmentBinding addBinding;
 
+    //把数据存入数据库而定义的变量
+    //private DiaryDatabase diaryDatabase;
+    private DiaryViewModel diaryViewModel;
+    //private LiveData<List<DiaryEntry>> diaryLiveData;
+   // private DiaryRepository cRepository;
+   // private static final String MY_TAG = "MY_FRAGMENT_TAG";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         binding = AddTravelDiaryFragmentBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
+
         titleEditText = binding.titleEdittext;
         descriptionEditText = binding.descriptionEdittext;
         locationEditText = binding.locationEdittext;
@@ -55,6 +75,8 @@ public class AddTravelDiaryFragment extends Fragment {
         satisfactionSeekBar = binding.satisfactionSlider;
         satisfactionScoreTextView = binding.satisfactionScoreTextview;
         weatherRadioGroup = binding.weatherRadiogroup;
+       // diaryDatabase = DiaryDatabase.getInstance(getActivity());
+       // diaryLiveData = cRepository.getAllDiary();
 
         // Set up the category spinner category_array
        /* String[] categories = getResources().getStringArray(R.array.category_array);
@@ -135,7 +157,7 @@ public class AddTravelDiaryFragment extends Fragment {
                 String title = titleEditText.getText().toString().trim();
                 String description = descriptionEditText.getText().toString().trim();
                 String location = locationEditText.getText().toString().trim();
-                double expense = Double.parseDouble(expenseEditText.getText().toString());
+                int expense = Integer.parseInt(expenseEditText.getText().toString());
                 //int categoryIndex = categorySpinner.getSelectedItemPosition();
                 //String satisfaction = satisfactionScoreTextView.getText().toString();
                 int satisfaction = satisfactionSeekBar.getProgress();
@@ -154,8 +176,15 @@ public class AddTravelDiaryFragment extends Fragment {
                 String dateString = sdf.format(date);
 
                 // Do something with the user input, such as save it to a database
-
+                //String title, String date, String description, String weather, String location, int fee, int rating
+                DiaryEntry newDiary = new DiaryEntry(title, dateString,description, weather,location, expense, satisfaction);
+                //diaryDatabase.diaryDao().insert(newDiary);
+                diaryViewModel.insert(newDiary);
+                binding.textViewAdd.setText("Added Record: " + title + " " +
+                        location + " " + satisfaction);
             }
+
+
         });
         binding.mapbutton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -193,6 +222,31 @@ public class AddTravelDiaryFragment extends Fragment {
 
             }
         });
+        // Add an observer that listens for changes to the expense list
+        //we make sure that AndroidViewModelFactory creates the view model so it can
+        //accept the Application as the parameter
+        //diaryViewModel =
+        //       ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(DiaryViewModel.class);
+        Context context = requireActivity().getApplicationContext();
+
+        diaryViewModel = new ViewModelProvider(requireActivity()).get(DiaryViewModel.class);
+
+
+        diaryViewModel.getAllDiary().observe(getViewLifecycleOwner(), new Observer<List<DiaryEntry>>() {
+            @Override
+            public void onChanged(List<DiaryEntry> customers) {
+                String allCustomers = "";
+                for (DiaryEntry temp : customers) {
+                    String customerDetails = (temp.getTitle() + " " + temp.getDate() + " "
+                            + temp.getWeather() + " " + temp.getLocation());
+                    allCustomers = allCustomers +
+                            System.getProperty("line.separator") + customerDetails;
+                }
+                binding.textViewRead.setText("All data: " + allCustomers);
+            }
+        });
+
+
 
         return view;
     }

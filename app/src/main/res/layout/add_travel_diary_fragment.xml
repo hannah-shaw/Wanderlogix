@@ -127,7 +127,7 @@
 
     <RadioGroup
         android:id="@+id/weather_radiogroup"
-        android:layout_width="298dp"
+        android:layout_width="285dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/weather_textview"
         android:layout_marginStart="33dp"
@@ -162,9 +162,9 @@
         android:layout_height="100dp"
         android:layout_below="@id/weather_radiogroup"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="-10dp"
+        android:layout_marginTop="11dp"
         android:calendarViewShown="false"
-        android:datePickerMode="spinner"/>
+        android:datePickerMode="spinner" />
 
     <Button
         android:id="@+id/save_button"
@@ -172,10 +172,20 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="23dp"
-        android:layout_marginBottom="13dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="64dp"
         android:onClick="onSaveButtonClicked"
         android:text="Save" />
+
+    <TextView
+        android:id="@+id/textView_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="-3dp"
+        android:layout_marginBottom="639dp"
+        android:background="@color/colorPrimary" />
 
     <Button
         android:id="@+id/clear_button"
@@ -184,9 +194,18 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="11dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="66dp"
         android:onClick="onClearButtonClicked"
         android:text="Cancel" />
 
+    <TextView
+        android:id="@+id/textView_read"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="-5dp"
+        android:layout_marginBottom="13dp"
+        android:background="@color/purple_200" />
 
 </RelativeLayout>

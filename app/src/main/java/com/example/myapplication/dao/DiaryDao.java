@@ -37,4 +37,5 @@ public interface DiaryDao {
     @Query("SELECT id FROM diary_entries")
     List<Integer> getId();
 
+
 }

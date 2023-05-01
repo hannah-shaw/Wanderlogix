@@ -1,4 +1,30 @@
 package com.example.myapplication.viewmodel;
 
-public class DiaryViewModel {
+import android.app.Application;
+
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+
+import com.example.myapplication.entity.DiaryEntry;
+import com.example.myapplication.repository.DiaryRepository;
+
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+
+public class DiaryViewModel  extends AndroidViewModel {
+    private DiaryRepository dRepository;
+    private LiveData<List<DiaryEntry>> alldiaries;
+    public DiaryViewModel (Application application) {
+        super(application);
+        dRepository = new DiaryRepository(application);
+        alldiaries = dRepository.getAllDiary();
+    }
+    public LiveData<List<DiaryEntry>> getAllDiary() {
+        return alldiaries;
+    }
+    public void insert(DiaryEntry diaryEntry) {
+        dRepository.insert(diaryEntry);
+    }
+
+
 }
