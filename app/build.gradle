@@ -76,4 +76,11 @@ dependencies {
 
     //dependencies for chart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    // ViewModel and LiveData
+    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.5.1'
+    implementation 'androidx.lifecycle:lifecycle-livedata:2.5.1'
+    // Room
+    implementation 'androidx.room:room-runtime:2.5.0'
+    annotationProcessor 'androidx.room:room-compiler:2.5.0'
 }
