@@ -5,6 +5,7 @@ import androidx.room.*;
 import com.example.myapplication.entity.DiaryEntry;
 import java.util.*;
 
+@Dao
 public interface DiaryDao {
     @Query("SELECT * FROM diary_entries")
     LiveData<List<DiaryEntry>> getAll();
