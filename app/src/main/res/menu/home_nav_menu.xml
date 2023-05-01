@@ -3,4 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
     <item android:id="@+id/nav_home_fragment" android:title="Home Fragment" />
+    <item android:id="@+id/add_travel_diary_fragment" android:title="Add Travel Diary Fragment" />
+    <item android:id="@+id/report_fragment" android:title="Chart" />
+    <item android:id="@+id/show_map_fragment" android:title="Map" />
 </menu>

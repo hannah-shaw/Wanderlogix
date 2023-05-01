@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Wanderlogix" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.MyApplication" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -13,12 +13,12 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
-    <style name="Theme.Wanderlogix.NoActionBar">
+    <style name="Theme.MyApplication.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-    </style> <style name="Theme.Wanderlogix.AppBarOverlay"
+    </style> <style name="Theme.MyApplication.AppBarOverlay"
     parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.Wanderlogix.PopupOverlay"
+    <style name="Theme.MyApplication.PopupOverlay"
         parent="ThemeOverlay.MaterialComponents.Light" />
 </resources>

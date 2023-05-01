@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <EditText
+        android:id="@+id/title_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="Enter title here"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textSize="15sp"/>
+
+    <EditText
+        android:id="@+id/description_edittext"
+        android:layout_width="394dp"
+        android:layout_height="270dp"
+        android:layout_below="@id/title_edittext"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:hint="Enter description here"
+        android:inputType="textMultiLine"
+        android:maxHeight="300dp"
+        android:scrollbars="vertical"
+        android:textSize="15sp"/>
+
+    <TextView
+        android:id="@+id/location_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Location:"
+        android:textSize="15sp"
+        android:layout_below="@id/description_edittext"
+        android:layout_marginTop="10dp"
+        />
+
+
+    <EditText
+        android:id="@+id/location_edittext"
+        android:layout_width="183dp"
+        android:layout_height="66dp"
+        android:layout_below="@id/location_textview"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="-46dp"
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@id/location_textview"
+        android:textSize="15sp"
+        android:hint="Enter location here"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/mapbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/location_textview"
+        android:layout_marginLeft="21dp"
+        android:layout_marginTop="-32dp"
+        android:layout_toRightOf="@id/location_edittext"
+        android:text="Map" />
+
+    <TextView
+        android:id="@+id/expense_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Expense:"
+        android:textSize="15sp"
+        android:layout_below="@id/location_textview"
+        android:layout_marginTop="10dp"
+        />
+
+    <EditText
+        android:id="@+id/expense_edittext"
+        android:layout_width="276dp"
+        android:layout_height="48dp"
+        android:layout_below="@id/location_edittext"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@id/expense_textview"
+        android:textSize="15sp"
+        android:hint="Enter Expense here"
+        android:inputType="numberDecimal" />
+
+    <TextView
+        android:id="@+id/satisfaction_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Satisfaction:"
+        android:textSize="15sp"
+        android:layout_below="@id/expense_edittext"
+        />
+
+
+    <SeekBar
+        android:id="@+id/satisfaction_slider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/satisfaction_textview"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@id/satisfaction_textview" />
+
+    <TextView
+        android:id="@+id/satisfaction_score_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5"
+        android:textSize="15sp"
+        android:layout_alignBottom="@id/satisfaction_slider"
+        android:layout_alignLeft="@id/satisfaction_slider"
+        android:layout_alignStart="@id/satisfaction_slider"
+        android:layout_marginBottom="1dp"/>
+
+    <TextView
+        android:id="@+id/weather_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Weather:"
+        android:textSize="15sp"
+        android:layout_below="@id/satisfaction_slider"
+        android:layout_marginTop="10dp"
+        />
+
+    <RadioGroup
+        android:id="@+id/weather_radiogroup"
+        android:layout_width="298dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/weather_textview"
+        android:layout_marginStart="33dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="-25dp"
+        android:layout_toEndOf="@id/weather_textview"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/sunny_radiobutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sunny" />
+
+        <RadioButton
+            android:id="@+id/rainy_radiobutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rainy" />
+
+        <RadioButton
+            android:id="@+id/cloudy_radiobutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cloudy" />
+
+    </RadioGroup>
+
+    <DatePicker
+        android:id="@+id/date_picker"
+        android:layout_width="380dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/weather_radiogroup"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="-10dp"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner"/>
+
+    <Button
+        android:id="@+id/save_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="13dp"
+        android:onClick="onSaveButtonClicked"
+        android:text="Save" />
+
+    <Button
+        android:id="@+id/clear_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="11dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="onClearButtonClicked"
+        android:text="Cancel" />
+
+
+</RelativeLayout>
