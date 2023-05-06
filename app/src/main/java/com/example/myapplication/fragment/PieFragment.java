@@ -7,18 +7,25 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.myapplication.databinding.PieFragmentBinding;
+import com.example.myapplication.entity.DiaryEntry;
+import com.example.myapplication.viewmodel.DiaryViewModel;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class PieFragment extends Fragment {
     private PieFragmentBinding binding;
+    private DiaryViewModel diaryViewModel;
 
     public PieFragment() {}
 
@@ -30,29 +37,29 @@ public class PieFragment extends Fragment {
         binding = PieFragmentBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
+        diaryViewModel= ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(DiaryViewModel.class);
+        List<Integer> diaryFeeList= diaryViewModel.getFee();
+        List<String> diaryLocationList = diaryViewModel.getLocation();
+
+        int diaryCount = 0;
+        for(Integer diaryFee:diaryFeeList){
+            diaryCount++;
+        }
         List<PieEntry> PieEntries = new ArrayList<>();
-        PieEntries.add(new PieEntry(5000, "Shanghai"));
-        PieEntries.add(new PieEntry(4050, "Beijing"));
-        PieEntries.add(new PieEntry(25000, "London"));
-        PieEntries.add(new PieEntry(20000, "Paris"));
-        PieEntries.add(new PieEntry(30010, "NewYork"));
-        PieEntries.add(new PieEntry(2200, "Suzhou"));
-        PieEntries.add(new PieEntry(2800, "Nanjing"));
-        PieEntries.add(new PieEntry(6500, "Hong kong"));
+        for(int i=0;i<diaryCount;i++){
+            PieEntries.add(new PieEntry(diaryFeeList.get(i), diaryLocationList.get(i)));
+        }
         PieDataSet PieDataSet = new PieDataSet(PieEntries,"Travel Cost");
-        PieDataSet.setColors(ColorTemplate.LIBERTY_COLORS);
+        PieDataSet.setColors(ColorTemplate.PASTEL_COLORS);
         PieData PieData = new PieData(PieDataSet);
         binding.pieChart.setData(PieData);
-        binding.pieChart.setDrawEntryLabels(false);
-        binding.pieChart.setEntryLabelColor(Color.WHITE);
-        binding.pieChart.setEntryLabelTextSize(20f);
+        binding.pieChart.setDrawEntryLabels(true);
+        binding.pieChart.setEntryLabelColor(Color.BLACK);
+        binding.pieChart.setEntryLabelTextSize(7f);
         binding.pieChart.setDrawHoleEnabled(true);
         binding.pieChart.setHoleRadius(42f);
         binding.pieChart.setHoleColor(Color.WHITE);
         binding.pieChart.setDrawCenterText(false);
-        binding.pieChart.setCenterText("");
-        binding.pieChart.setCenterTextSize(10f);
-        binding.pieChart.setCenterTextColor(Color.RED);
         binding.pieChart.setTransparentCircleRadius(31f);
         binding.pieChart.setTransparentCircleColor(Color.BLACK);
         binding.pieChart.setTransparentCircleAlpha(50);

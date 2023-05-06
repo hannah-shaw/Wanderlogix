@@ -8,18 +8,7 @@ import com.example.myapplication.database.DiaryDatabase;
 import com.example.myapplication.entity.DiaryEntry;
 
 import java.util.List;
-import android.app.Application;
-import android.content.Context;
 
-import androidx.lifecycle.LiveData;
-
-import com.example.myapplication.dao.DiaryDao;
-import com.example.myapplication.database.DiaryDatabase;
-import com.example.myapplication.entity.DiaryEntry;
-
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
 public class DiaryRepository {
     private DiaryDao diaryDao;
     private LiveData<List<DiaryEntry>> allDiary;
@@ -47,6 +36,12 @@ public class DiaryRepository {
     public DiaryEntry findDiarybyId(int diaryId){
         return  diaryDao.findByID(diaryId);
     }
+
+    public List<Integer> getRating(){return diaryDao.getRating();}
+
+    public List<Integer> getFee(){return diaryDao.getFee();}
+
+    public List<String> getLocation(){return diaryDao.getLocation();}
 
 
 

@@ -31,6 +31,10 @@ public class DiaryViewModel  extends AndroidViewModel {
     public DiaryEntry findDiarybyId(int diaryId){
         return dRepository.findDiarybyId(diaryId);
     }
+    public List<Integer> getRating(){return dRepository.getRating();}
+    public List<Integer> getFee(){return dRepository.getFee();}
+
+    public List<String> getLocation(){return dRepository.getLocation();}
 
 
 }
