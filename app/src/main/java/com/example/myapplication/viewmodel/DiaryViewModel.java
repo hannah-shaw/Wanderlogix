@@ -33,8 +33,8 @@ public class DiaryViewModel  extends AndroidViewModel {
     }
     public List<Integer> getRating(){return dRepository.getRating();}
     public List<Integer> getFee(){return dRepository.getFee();}
-
     public List<String> getLocation(){return dRepository.getLocation();}
+    public List<String> getDate(){return dRepository.getDate();}
 
 
 }

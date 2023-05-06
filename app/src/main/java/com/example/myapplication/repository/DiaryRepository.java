@@ -43,6 +43,8 @@ public class DiaryRepository {
 
     public List<String> getLocation(){return diaryDao.getLocation();}
 
+    public List<String> getDate(){return diaryDao.getDate();}
+
 
 
 
