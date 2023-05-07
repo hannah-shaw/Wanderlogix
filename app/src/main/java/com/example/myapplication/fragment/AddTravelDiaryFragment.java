@@ -180,8 +180,9 @@ public class AddTravelDiaryFragment extends Fragment {
                 DiaryEntry newDiary = new DiaryEntry(title, dateString,description, weather,location, expense, satisfaction);
                 //diaryDatabase.diaryDao().insert(newDiary);
                 diaryViewModel.insert(newDiary);
-                binding.textViewAdd.setText("Added Record: " + title + " " +
-                        location + " " + satisfaction);
+                toastMsg("add successful");
+                //binding.textViewAdd.setText("Added Record: " + title + " " +
+                       // location + " " + satisfaction);
             }
 
 
