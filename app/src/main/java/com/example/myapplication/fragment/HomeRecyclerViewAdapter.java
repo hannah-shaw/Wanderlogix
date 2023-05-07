@@ -41,6 +41,37 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter <HomeRecyclerV
         DiaryEntry diary;
         Integer idDiary=diaryListId.get(position);
         diary=diaryViewModel.findDiarybyId(idDiary);
+        if(diary.id%10==0){
+            viewHolder.binding.image.setImageResource(R.drawable.i1);
+        }
+        else if(diary.id%10==1){
+            viewHolder.binding.image.setImageResource(R.drawable.i2);
+        }
+        else if(diary.id%10==2){
+            viewHolder.binding.image.setImageResource(R.drawable.i3);
+        }
+        else if(diary.id%10==3){
+            viewHolder.binding.image.setImageResource(R.drawable.i4);
+        }
+        else if(diary.id%10==4){
+            viewHolder.binding.image.setImageResource(R.drawable.i5);
+        }
+        else if(diary.id%10==5){
+            viewHolder.binding.image.setImageResource(R.drawable.i6);
+        }
+        else if(diary.id%10==6){
+            viewHolder.binding.image.setImageResource(R.drawable.i7);
+        }
+        else if(diary.id%10==7){
+            viewHolder.binding.image.setImageResource(R.drawable.i8);
+        }
+        else if(diary.id%10==8){
+            viewHolder.binding.image.setImageResource(R.drawable.i9);
+        }
+        else if(diary.id%10==9){
+            viewHolder.binding.image.setImageResource(R.drawable.i10);
+        }
+
         viewHolder.binding.logixTiltle.setText(diary.title);
         //viewHolder.binding.logixTitleImage.setImageBitmap(unit.titleImgae);
         viewHolder.binding.logixIntroduce.setText(diary.description);
@@ -50,7 +81,7 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter <HomeRecyclerV
                     public void onClick(View v) {
                         Bundle arg=new Bundle();
                         //arg.putParcelable("image",unit.image);
-                        arg.putString("content",diary.date);
+                        arg.putString("content", String.valueOf(diary.id));
                         replaceFragment(arg,v);
                     }
                 }

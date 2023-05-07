@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:inputType="text"
         android:hint="Enter title here"
+        android:fontFamily="monospace"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:textSize="15sp"/>
@@ -24,6 +25,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:hint="Enter description here"
+        android:fontFamily="monospace"
         android:inputType="textMultiLine"
         android:maxHeight="300dp"
         android:scrollbars="vertical"
@@ -33,7 +35,9 @@
         android:id="@+id/location_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" Location:"
+        android:layout_marginLeft="10dp"
+        android:text="Location:"
+        android:fontFamily="monospace"
         android:textSize="15sp"
         android:layout_below="@id/description_edittext"
         android:layout_marginTop="10dp"
@@ -51,6 +55,7 @@
         android:layout_toRightOf="@id/location_textview"
         android:textSize="15sp"
         android:hint="Enter location here"
+        android:fontFamily="monospace"
         android:inputType="text" />
 
     <Button
@@ -67,7 +72,9 @@
         android:id="@+id/expense_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" Expense:"
+        android:layout_marginLeft="10dp"
+        android:text="Expense:"
+        android:fontFamily="monospace"
         android:textSize="15sp"
         android:layout_below="@id/location_textview"
         android:layout_marginTop="10dp"
@@ -78,6 +85,7 @@
         android:layout_width="276dp"
         android:layout_height="48dp"
         android:layout_below="@id/location_edittext"
+        android:fontFamily="monospace"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="10dp"
         android:layout_toRightOf="@id/expense_textview"
@@ -89,7 +97,9 @@
         android:id="@+id/satisfaction_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" Satisfaction:"
+        android:layout_marginLeft="10dp"
+        android:text="Satisfaction:"
+        android:fontFamily="monospace"
         android:textSize="15sp"
         android:layout_below="@id/expense_edittext"
         />
@@ -119,7 +129,9 @@
         android:id="@+id/weather_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" Weather:"
+        android:text="Weather:"
+        android:fontFamily="monospace"
+        android:layout_marginLeft="10dp"
         android:textSize="15sp"
         android:layout_below="@id/satisfaction_slider"
         android:layout_marginTop="10dp"
@@ -140,18 +152,21 @@
             android:id="@+id/sunny_radiobutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="monospace"
             android:text="Sunny" />
 
         <RadioButton
             android:id="@+id/rainy_radiobutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="monospace"
             android:text="Rainy" />
 
         <RadioButton
             android:id="@+id/cloudy_radiobutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="monospace"
             android:text="Cloudy" />
 
     </RadioGroup>

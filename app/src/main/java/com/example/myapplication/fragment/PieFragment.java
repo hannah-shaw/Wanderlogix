@@ -6,13 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.myapplication.databinding.PieFragmentBinding;
-import com.example.myapplication.entity.DiaryEntry;
 import com.example.myapplication.viewmodel.DiaryViewModel;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
@@ -24,9 +23,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class PieFragment extends Fragment {
     private PieFragmentBinding binding;
@@ -85,20 +82,25 @@ public class PieFragment extends Fragment {
                 System.out.println(EndDateString);
 
                 int i = -1;
+                Boolean isChange = false;
                 List<PieEntry> PieEntriesDB = new ArrayList<>();
                 for (String dateString : dateList) {
                     i++;
                     try {
                         Date dateDB = sdf.parse(dateString);
-                        if (dateDB.after(beginDate)) {
-                            if (EndDate.after(dateDB)) {
+                        if (!dateDB.before(beginDate)) {
+                            if (!EndDate.before(dateDB)) {
                                 PieEntriesDB.add(new PieEntry(diaryFeeList.get(i), diaryLocationList.get(i)));
-                                pieSetting(PieEntriesDB);
+                                isChange = true;
                             }
                         }
                     } catch (ParseException e) {
                         throw new RuntimeException(e);
                     }
+                }
+                pieSetting(PieEntriesDB);
+                if(isChange==false){
+                    toastMsg("There is no data during this period");
                 }
             }
         });
@@ -131,7 +133,10 @@ public class PieFragment extends Fragment {
         binding.pieChart.setVisibility(View.VISIBLE);
         //refresh the chart
         binding.pieChart.invalidate();
+    }
 
+    public void toastMsg(String message){
+        Toast.makeText(getActivity(),message,Toast.LENGTH_SHORT).show();
     }
 
 
