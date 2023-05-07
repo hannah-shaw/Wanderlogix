@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.myapplication.User.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -47,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
                 // Just for test
 //                startActivity(new Intent(LoginActivity.this,
 //                        MainActivity.class));
+//                User.setEmail("Test");
 
                 String txt_Email = emailEditText.getText().toString();
                 String txt_Pwd = passwordEditText.getText().toString();
@@ -94,6 +96,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             //Log.d(TAG, "signInWithEmail:success");
+                            User.setEmail(txt_email);
                             String msg = "Login Successful";
                             toastMsg(msg);
                             startActivity(new Intent(LoginActivity.this,

@@ -4,6 +4,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.google.firebase.firestore.Exclude;
+
 @Entity(tableName = "diary_entries")
 public class DiaryEntry {
     @PrimaryKey(autoGenerate = true)
@@ -30,6 +32,13 @@ public class DiaryEntry {
     @ColumnInfo(name = "rating")
     public int rating;
 
+    @ColumnInfo(name = "updated")
+    public  boolean updated;
+
+    //No argument constructor for serialize
+    public  DiaryEntry(){
+    }
+
     public DiaryEntry(String title, String date, String description, String weather, String location, int fee, int rating) {
         this.title = title;
         this.date = date;
@@ -38,12 +47,14 @@ public class DiaryEntry {
         this.location = location;
         this.fee = fee;
         this.rating = rating;
+        this.updated=false;
     }
 
+    @Exclude
     public int getId() {
         return id;
     }
-
+    @Exclude
     public void setId(int id) {
         this.id = id;
     }
@@ -103,4 +114,9 @@ public class DiaryEntry {
     public void setRating(int rating) {
         this.rating = rating;
     }
+    @Exclude
+    public boolean getUpdated(){return updated;};
+    @Exclude
+    public void setUpdated(boolean updated){this.updated=updated;};
+
 }

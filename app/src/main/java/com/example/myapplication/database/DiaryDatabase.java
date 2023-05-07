@@ -12,7 +12,7 @@ import com.example.myapplication.entity.DiaryEntry;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {DiaryEntry.class}, version = 1, exportSchema = false)
+@Database(entities = {DiaryEntry.class}, version = 2, exportSchema = false)
 public abstract class DiaryDatabase extends RoomDatabase {
     public abstract DiaryDao diaryDao();
     private static DiaryDatabase INSTANCE;

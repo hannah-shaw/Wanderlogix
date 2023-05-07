@@ -31,7 +31,7 @@ public class HomeFragment extends Fragment {
         View view = binding.getRoot();
 
         diaryViewModel= ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(DiaryViewModel.class);
-
+        diaryViewModel.SynchronizeGetData();
         LiveData<List<Integer>> diaryList=diaryViewModel.getAllId();
         adapter = new HomeRecyclerViewAdapter(diaryViewModel,diaryList.getValue());
         //this just creates a line divider between rows
@@ -53,7 +53,6 @@ public class HomeFragment extends Fragment {
         });
         return view;
     }
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();

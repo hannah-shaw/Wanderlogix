@@ -45,10 +45,15 @@ public class DiaryRepository {
 
     public List<String> getDate(){return diaryDao.getDate();}
 
-
-
-
-
-
-
+    public void setUpdate(Integer diaryId, boolean updated){
+        DiaryDatabase.databaseWriteExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                diaryDao.setUpdated(diaryId, updated);
+            }
+        });
+    }
+    public boolean getUpdated(Integer diaryId){
+        return diaryDao.getUpdated(diaryId);
+    }
 }

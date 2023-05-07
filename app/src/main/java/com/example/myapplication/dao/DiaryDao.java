@@ -40,6 +40,9 @@ public interface DiaryDao {
     @Query("SELECT date FROM diary_entries")
     List<String> getDate();
 
+    @Query("UPDATE diary_entries SET updated= :updated WHERE id= :diaryId")
+    void setUpdated(int diaryId, boolean updated);
 
-
+    @Query("SELECT updated FROM diary_entries WHERE id= :diaryId")
+    boolean getUpdated(int diaryId);
 }
