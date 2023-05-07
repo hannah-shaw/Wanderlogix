@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -92,6 +93,7 @@ public class BarFragment extends Fragment {
                 System.out.println(EndDateString);
 
                 int i = -1;
+                Boolean isChange = false;
                 List<BarEntry> BarEntriesDB = new ArrayList<>();
                 Map<Integer, Integer> ratingCountsDate = new HashMap<>();
                 for (int j = 0; j <= 10; j++) {
@@ -101,20 +103,24 @@ public class BarFragment extends Fragment {
                     i++;
                     try {
                         Date dateDB = sdf.parse(dateString);
-                        if (dateDB.after(beginDate)) {
-                            if (EndDate.after(dateDB)) {
+                        if (!dateDB.before(beginDate)) {
+                            if (!EndDate.before(dateDB)) {
                                 ratingCountsDate.put(ratingList.get(i), ratingCountsDate.get(ratingList.get(i)) + 1);
                                 for(int k=0;k<=10;k++) {
                                     BarEntriesDB.add(new BarEntry(k, ratingCountsDate.get(k)));
-                                    barSetting(BarEntriesDB);
                                 }
+                                isChange = true;
                             }
                         }
                     } catch (ParseException e) {
                         throw new RuntimeException(e);
                     }
-                }
 
+                }
+                barSetting(BarEntriesDB);
+                if(isChange==false){
+                    toastMsg("There is no data during this period");
+                }
             }
         });
 
@@ -136,7 +142,6 @@ public class BarFragment extends Fragment {
         binding.barChart.getXAxis().setValueFormatter(new
                 com.github.mikephil.charting.formatter.IndexAxisValueFormatter(xAxisValues));
         BarData barData = new BarData(barDataSet);
-        barData.setBarWidth(0.7f);
         binding.barChart.setData(barData);
         binding.barChart.setScaleEnabled(false);
         binding.barChart.getDescription().setEnabled(false);
@@ -145,5 +150,8 @@ public class BarFragment extends Fragment {
         binding.barChart.invalidate();
     }
 
+    public void toastMsg(String message){
+        Toast.makeText(getActivity(),message,Toast.LENGTH_SHORT).show();
+    }
 
 }
