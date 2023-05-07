@@ -10,6 +10,7 @@ import androidx.navigation.ui.NavigationUI;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.myapplication.User.User;
 import com.example.myapplication.databinding.ActivityMainBinding;
 import com.example.myapplication.entity.DiaryEntry;
 import com.example.myapplication.repository.DiaryRepository;
@@ -33,5 +34,10 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
         NavigationUI.setupWithNavController(binding.appBar.toolbar,navController,
                 mAppBarConfiguration);
+    }
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        User.setEmail("");
     }
 }

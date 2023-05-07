@@ -24,14 +24,19 @@ public class HomeFragment extends Fragment {
     private HomeRecyclerViewAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private DiaryViewModel diaryViewModel;
+    public HomeFragment(){}
+    @Override
+    public void onCreate(Bundle arg){
+        super.onCreate(arg);
+        diaryViewModel= ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(DiaryViewModel.class);
+        diaryViewModel.SynchronizeGetData();
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the View for this fragment
         binding = HomeFragmentBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
-        diaryViewModel= ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(DiaryViewModel.class);
-        diaryViewModel.SynchronizeGetData();
         LiveData<List<Integer>> diaryList=diaryViewModel.getAllId();
         adapter = new HomeRecyclerViewAdapter(diaryViewModel,diaryList.getValue());
         //this just creates a line divider between rows

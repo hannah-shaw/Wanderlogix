@@ -78,6 +78,7 @@ public class LoginActivity extends AppCompatActivity {
                 txt_pwd).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
+                User.setEmail(txt_email);
                 String msg = "Login Successful";
                 toastMsg(msg);
                 startActivity(new Intent(LoginActivity.this,
