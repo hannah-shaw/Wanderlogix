@@ -74,6 +74,7 @@ public class DiaryViewModel  extends AndroidViewModel {
                             if(task.isSuccessful()){
                                 for(QueryDocumentSnapshot doc : task.getResult()){
                                     DiaryEntry diary=doc.toObject(DiaryEntry.class);
+                                    diary.updated=true;
                                     dRepository.insert(diary);
                                 }
                             }
@@ -86,6 +87,7 @@ public class DiaryViewModel  extends AndroidViewModel {
                     if(task.isSuccessful()){
                         for(QueryDocumentSnapshot doc : task.getResult()){
                             DiaryEntry diary=doc.toObject(DiaryEntry.class);
+                            diary.updated=true;
                             dRepository.insert(diary);
                         }
                     }
