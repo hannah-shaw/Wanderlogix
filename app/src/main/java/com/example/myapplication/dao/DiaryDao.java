@@ -34,7 +34,7 @@ public interface DiaryDao {
     @Query("SELECT location FROM diary_entries")
     List<String> getLocation();
 
-    @Query("SELECT id FROM diary_entries")
+    @Query("SELECT id FROM diary_entries ORDER BY id DESC")
     LiveData<List<Integer>> getId();
 
     @Query("SELECT date FROM diary_entries")
