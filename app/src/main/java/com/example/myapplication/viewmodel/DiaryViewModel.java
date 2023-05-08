@@ -61,6 +61,8 @@ public class DiaryViewModel  extends AndroidViewModel {
     public List<String> getLocation(){return dRepository.getLocation();}
     public List<String> getDate(){return dRepository.getDate();}
 
+    public Boolean getUpdated(Integer diaryId){return dRepository.getUpdated(diaryId);}
+
     //Synchronize for get data from firebase Cloud, add remote new data to local.
     public void SynchronizeGetData(){
         List<Integer> localId=getAllId().getValue();

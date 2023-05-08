@@ -28,4 +28,8 @@
         android:id="@+id/search_fragment"
         android:name="com.example.myapplication.fragment.SearchFragment"
         android:label="Search" />
+    <fragment
+        android:id="@+id/work_fragment"
+        android:name="com.example.myapplication.fragment.WorkFragment"
+        android:label="Work" />
 </navigation>
