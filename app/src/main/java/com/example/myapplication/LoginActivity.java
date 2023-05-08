@@ -74,6 +74,7 @@ public class LoginActivity extends AppCompatActivity {
     }
     private void loginUser(String txt_email, String txt_pwd) {
         // call the object and provide it with email id and password
+        /*
         auth.signInWithEmailAndPassword(txt_email,
                 txt_pwd).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
@@ -85,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
                         MainActivity.class));
             }
         });
-
+*/
         if(!Patterns.EMAIL_ADDRESS.matcher(txt_email).matches()) {
             String msg = "Invalid email address.";
             toastMsg(msg);
