@@ -40,7 +40,8 @@ public class DiaryViewModel  extends AndroidViewModel {
     //The method will insert data in local room database and try to add diary data to remote firebase cloud.
     //If remote failed, just failed, if succeed, update the value of key:update in local.
     public void insert(DiaryEntry diaryEntry) {
-        dRepository.insert(diaryEntry);
+        Integer id = dRepository.insert(diaryEntry);
+        diaryEntry.id=id;
         firedb.collection(User.getUserEmail()).document(Integer.toString(diaryEntry.id)).set(diaryEntry)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -75,6 +76,7 @@ public class DiaryViewModel  extends AndroidViewModel {
                                 for(QueryDocumentSnapshot doc : task.getResult()){
                                     DiaryEntry diary=doc.toObject(DiaryEntry.class);
                                     diary.updated=true;
+                                    diary.id=Integer.parseInt(doc.getId());
                                     dRepository.insert(diary);
                                 }
                             }
@@ -88,6 +90,7 @@ public class DiaryViewModel  extends AndroidViewModel {
                         for(QueryDocumentSnapshot doc : task.getResult()){
                             DiaryEntry diary=doc.toObject(DiaryEntry.class);
                             diary.updated=true;
+                            diary.id=Integer.parseInt(doc.getId());
                             dRepository.insert(diary);
                         }
                     }

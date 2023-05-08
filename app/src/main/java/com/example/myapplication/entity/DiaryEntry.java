@@ -9,7 +9,7 @@ import com.google.firebase.firestore.Exclude;
 @Entity(tableName = "diary_entries")
 public class DiaryEntry {
     @PrimaryKey(autoGenerate = true)
-    public int id;
+    public Integer id;
 
     @ColumnInfo(name = "title")
     public String title;
