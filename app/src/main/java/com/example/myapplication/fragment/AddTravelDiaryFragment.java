@@ -1,6 +1,7 @@
 package com.example.myapplication.fragment;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
@@ -27,6 +28,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.example.myapplication.MainActivity;
+import com.example.myapplication.R;
 import com.example.myapplication.SelectMapActivity;
 import com.example.myapplication.database.DiaryDatabase;
 import com.example.myapplication.databinding.AddTravelDiaryFragmentBinding;

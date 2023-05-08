@@ -12,6 +12,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="85dp"
+        android:layout_marginLeft="15dp"
+        android:fontFamily="casual"
         android:text="Wanderlogix"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        android:textSize="34sp" />
 </LinearLayout>
