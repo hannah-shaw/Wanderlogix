@@ -3,9 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity"
-    >
+    android:background="@drawable/mountain3"
+    android:orientation="vertical">
 
     <EditText
         android:id="@+id/editText"
@@ -14,24 +13,25 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:fontFamily="monospace"
-        android:hint="search"
+        android:hint="search from Google"
         android:textAlignment="viewStart"
         android:textStyle="italic" />
+
     <Button
+        android:id="@+id/btnSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Search"
-        android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
-        android:id="@+id/btnSearch"/>
+        android:layout_marginRight="20dp"
+        android:text="Search" />
 
     <TextView
         android:id="@+id/tvResult"
-        android:fontFamily="monospace"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:fontFamily="monospace" />
 
 </LinearLayout>

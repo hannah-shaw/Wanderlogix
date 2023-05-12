@@ -71,7 +71,7 @@
         android:id="@+id/content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/contentTitle"
+        android:layout_below="@id/fee"
         android:layout_toRightOf="@id/contentTitle"
         android:layout_marginTop="10dp"
         android:layout_marginRight="15dp"
