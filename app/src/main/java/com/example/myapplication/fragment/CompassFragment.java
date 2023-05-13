@@ -8,9 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.myapplication.Compass;
-import com.example.myapplication.R;
-import com.example.myapplication.SOTWFormatter;
+import com.example.myapplication.compass.Compass;
+import com.example.myapplication.compass.SOTWFormatter;
 import com.example.myapplication.databinding.CompassFragmentBinding;
 
 import android.util.Log;

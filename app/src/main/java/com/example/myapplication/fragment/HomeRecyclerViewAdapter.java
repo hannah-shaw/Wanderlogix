@@ -19,19 +19,20 @@ import com.example.myapplication.viewmodel.DiaryViewModel;
 
 import java.util.List;
 
-public class HomeRecyclerViewAdapter extends RecyclerView.Adapter <HomeRecyclerViewAdapter.ViewHolder>{
+public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerViewAdapter.ViewHolder> {
 
     private DiaryViewModel diaryViewModel;
     private List<Integer> diaryListId;
+
     public HomeRecyclerViewAdapter(DiaryViewModel diaryViewModel, List<Integer> diaryListId) {
-        this.diaryViewModel=diaryViewModel;
-        this.diaryListId=diaryListId;
+        this.diaryViewModel = diaryViewModel;
+        this.diaryListId = diaryListId;
     }
 
     @Override
     public HomeRecyclerViewAdapter.ViewHolder onCreateViewHolder(
             @NonNull ViewGroup parent, int viewType) {
-        HomeCardLayoutBinding binding= HomeCardLayoutBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        HomeCardLayoutBinding binding = HomeCardLayoutBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
         return new ViewHolder(binding);
     }
 
@@ -39,36 +40,27 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter <HomeRecyclerV
     @Override
     public void onBindViewHolder(@NonNull HomeRecyclerViewAdapter.ViewHolder viewHolder, int position) {
         DiaryEntry diary;
-        Integer idDiary=diaryListId.get(position);
-        diary=diaryViewModel.findDiarybyId(idDiary);
-        if(diary.id%10==0){
+        Integer idDiary = diaryListId.get(position);
+        diary = diaryViewModel.findDiarybyId(idDiary);
+        if (diary.id % 10 == 0) {
             viewHolder.binding.image.setImageResource(R.drawable.i1);
-        }
-        else if(diary.id%10==1){
+        } else if (diary.id % 10 == 1) {
             viewHolder.binding.image.setImageResource(R.drawable.i2);
-        }
-        else if(diary.id%10==2){
+        } else if (diary.id % 10 == 2) {
             viewHolder.binding.image.setImageResource(R.drawable.i3);
-        }
-        else if(diary.id%10==3){
+        } else if (diary.id % 10 == 3) {
             viewHolder.binding.image.setImageResource(R.drawable.i4);
-        }
-        else if(diary.id%10==4){
+        } else if (diary.id % 10 == 4) {
             viewHolder.binding.image.setImageResource(R.drawable.i5);
-        }
-        else if(diary.id%10==5){
+        } else if (diary.id % 10 == 5) {
             viewHolder.binding.image.setImageResource(R.drawable.i6);
-        }
-        else if(diary.id%10==6){
+        } else if (diary.id % 10 == 6) {
             viewHolder.binding.image.setImageResource(R.drawable.i7);
-        }
-        else if(diary.id%10==7){
+        } else if (diary.id % 10 == 7) {
             viewHolder.binding.image.setImageResource(R.drawable.i8);
-        }
-        else if(diary.id%10==8){
+        } else if (diary.id % 10 == 8) {
             viewHolder.binding.image.setImageResource(R.drawable.i9);
-        }
-        else if(diary.id%10==9){
+        } else if (diary.id % 10 == 9) {
             viewHolder.binding.image.setImageResource(R.drawable.i10);
         }
 
@@ -79,10 +71,10 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter <HomeRecyclerV
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Bundle arg=new Bundle();
+                        Bundle arg = new Bundle();
                         //arg.putParcelable("image",unit.image);
                         arg.putString("content", String.valueOf(diary.id));
-                        replaceFragment(arg,v);
+                        replaceFragment(arg, v);
                     }
                 }
         );
@@ -99,13 +91,14 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter <HomeRecyclerV
 
     @Override
     public int getItemCount() {
-        if(diaryListId==null) return 0;
+        if (diaryListId == null) return 0;
         return diaryListId.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private HomeCardLayoutBinding binding;
-        public ViewHolder(HomeCardLayoutBinding binding){
+
+        public ViewHolder(HomeCardLayoutBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }

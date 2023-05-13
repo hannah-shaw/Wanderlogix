@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.compass;
 
 import android.content.Context;
 import android.hardware.Sensor;

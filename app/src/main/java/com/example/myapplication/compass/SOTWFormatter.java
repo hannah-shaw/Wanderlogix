@@ -1,6 +1,8 @@
-package com.example.myapplication;
+package com.example.myapplication.compass;
 
 import android.content.Context;
+
+import com.example.myapplication.R;
 
 /**
  * SOTW is short Side Of The World
