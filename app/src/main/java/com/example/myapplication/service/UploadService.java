@@ -24,12 +24,12 @@ public class UploadService extends Service {
     private DiaryRepository dRepository=new DiaryRepository(getApplication());;
 
     public UploadService() {
-        Log.e("TestWork", "doWork: UploadService method is celled.");
+        Log.e("TestWork", "Method: UploadService method is called.");
         UpdateFirebase();
     }
 
     private void UpdateFirebase() {
-        Log.e("TestWork", "UpdateFirebase method is celled.");
+        Log.e("TestWork", "Method: UpdateFirebase method is called.");
         List<Integer> localId= dRepository.getAllId().getValue();
         if(localId==null){
             return;
