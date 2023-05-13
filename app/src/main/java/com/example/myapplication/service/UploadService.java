@@ -3,6 +3,7 @@ package com.example.myapplication.service;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import android.util.Log;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -23,10 +24,12 @@ public class UploadService extends Service {
     private DiaryRepository dRepository=new DiaryRepository(getApplication());;
 
     public UploadService() {
+        Log.e("TestWork", "doWork: UploadService method is celled.");
         UpdateFirebase();
     }
 
     private void UpdateFirebase() {
+        Log.e("TestWork", "UpdateFirebase method is celled.");
         List<Integer> localId= dRepository.getAllId().getValue();
         if(localId==null){
             return;

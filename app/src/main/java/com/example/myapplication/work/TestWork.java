@@ -21,6 +21,7 @@ public class TestWork extends Worker {
     @Override
     public Result doWork() {
         Log.e(TAG, "doWork: Test Work is done.");
+        //Log.e("TestWork", "doWork: Test Work is done.");
         Intent intent = new Intent(getApplicationContext(), UploadService.class);
         // 启动服务
         getApplicationContext().startService(intent);

@@ -32,4 +32,8 @@
         android:id="@+id/work_fragment"
         android:name="com.example.myapplication.fragment.WorkFragment"
         android:label="Work" />
+    <fragment
+        android:id="@+id/compass_fragment"
+        android:name="com.example.myapplication.fragment.CompassFragment"
+        android:label="Compass" />
 </navigation>
