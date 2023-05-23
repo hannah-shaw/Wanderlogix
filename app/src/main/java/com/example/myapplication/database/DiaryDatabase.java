@@ -6,6 +6,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import com.example.myapplication.User.User;
 import com.example.myapplication.dao.DiaryDao;
 import com.example.myapplication.entity.DiaryEntry;
 
@@ -23,7 +24,7 @@ public abstract class DiaryDatabase extends RoomDatabase {
     public static synchronized DiaryDatabase getInstance(final Context context) {
         if (INSTANCE == null) {
             INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            DiaryDatabase.class, "DiaryDatabase")
+                            DiaryDatabase.class, User.getUserEmail()+"DiaryDatabase")
                     .fallbackToDestructiveMigration()
                     .allowMainThreadQueries()
                     .build();

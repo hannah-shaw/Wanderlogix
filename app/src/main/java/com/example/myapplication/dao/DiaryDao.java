@@ -13,8 +13,8 @@ public interface DiaryDao {
     @Query("SELECT * FROM diary_entries WHERE id = :diaryid")
     DiaryEntry findByID(int diaryid);
 
-    @Insert
-    void insert(DiaryEntry diary);
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    long insert(DiaryEntry diary);
 
     @Delete
     void delete(DiaryEntry diary);

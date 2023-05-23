@@ -2,8 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
-    <item android:id="@+id/nav_home_fragment" android:title="Home Fragment" />
-    <item android:id="@+id/add_travel_diary_fragment" android:title="Add Travel Diary Fragment" />
+    <item android:id="@+id/nav_home_fragment" android:title="Home" />
+    <item android:id="@+id/add_travel_diary_fragment" android:title="Add Travel Diary"/>
     <item android:id="@+id/report_fragment" android:title="Chart" />
     <item android:id="@+id/show_map_fragment" android:title="Map" />
+    <item android:id="@+id/search_fragment" android:title="Search" />
+    <item android:id="@+id/work_fragment" android:title="Work" />
+    <item android:id="@+id/compass_fragment" android:title="Compass" />
 </menu>

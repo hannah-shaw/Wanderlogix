@@ -40,7 +40,8 @@ public class DiaryViewModel  extends AndroidViewModel {
     //The method will insert data in local room database and try to add diary data to remote firebase cloud.
     //If remote failed, just failed, if succeed, update the value of key:update in local.
     public void insert(DiaryEntry diaryEntry) {
-        dRepository.insert(diaryEntry);
+        Integer id = dRepository.insert(diaryEntry);
+        diaryEntry.id=id;
         firedb.collection(User.getUserEmail()).document(Integer.toString(diaryEntry.id)).set(diaryEntry)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -60,6 +61,8 @@ public class DiaryViewModel  extends AndroidViewModel {
     public List<String> getLocation(){return dRepository.getLocation();}
     public List<String> getDate(){return dRepository.getDate();}
 
+    public Boolean getUpdated(Integer diaryId){return dRepository.getUpdated(diaryId);}
+
     //Synchronize for get data from firebase Cloud, add remote new data to local.
     public void SynchronizeGetData(){
         List<Integer> localId=getAllId().getValue();
@@ -75,6 +78,7 @@ public class DiaryViewModel  extends AndroidViewModel {
                                 for(QueryDocumentSnapshot doc : task.getResult()){
                                     DiaryEntry diary=doc.toObject(DiaryEntry.class);
                                     diary.updated=true;
+                                    diary.id=Integer.parseInt(doc.getId());
                                     dRepository.insert(diary);
                                 }
                             }
@@ -88,6 +92,7 @@ public class DiaryViewModel  extends AndroidViewModel {
                         for(QueryDocumentSnapshot doc : task.getResult()){
                             DiaryEntry diary=doc.toObject(DiaryEntry.class);
                             diary.updated=true;
+                            diary.id=Integer.parseInt(doc.getId());
                             dRepository.insert(diary);
                         }
                     }

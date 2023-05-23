@@ -21,13 +21,8 @@ public class DiaryRepository {
     public LiveData<List<DiaryEntry>> getAllDiary(){
         return allDiary;
     }
-    public void insert(final DiaryEntry diary){
-        DiaryDatabase.databaseWriteExecutor.execute(new Runnable() {
-            @Override
-            public void run() {
-                diaryDao.insert(diary);
-            }
-        });
+    public Integer insert(final DiaryEntry diary){
+        return (int)diaryDao.insert(diary);
     }
     public LiveData<List<Integer>> getAllId(){
         return diaryDao.getId();

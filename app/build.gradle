@@ -76,6 +76,11 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:21.0.1'
     implementation 'com.karumi:dexter:6.2.1'
 
+    //dependencies for work manager
+    def work_version = "2.8.0"
+    // (Java only)
+    implementation "androidx.work:work-runtime:$work_version"
+
     //dependencies for chart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
@@ -85,4 +90,8 @@ dependencies {
     // Room
     implementation 'androidx.room:room-runtime:2.5.0'
     annotationProcessor 'androidx.room:room-compiler:2.5.0'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.google.code.gson:gson:2.8.8'
 }

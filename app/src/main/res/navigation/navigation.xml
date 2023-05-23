@@ -7,21 +7,33 @@
     <fragment
         android:id="@+id/nav_home_fragment"
         android:name="com.example.myapplication.fragment.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="WanderLogix" />
     <fragment
         android:id="@+id/logixContentFragment"
         android:name="com.example.myapplication.fragment.LogixContentFragment"
-        android:label="LogixContentFragment" />
+        android:label="LogixContent" />
     <fragment
         android:id="@+id/add_travel_diary_fragment"
         android:name="com.example.myapplication.fragment.AddTravelDiaryFragment"
-        android:label="AddTravelDiaryFragment" />
+        android:label="AddTravelDiary" />
     <fragment
         android:id="@+id/report_fragment"
         android:name="com.example.myapplication.fragment.ReportFragment"
-        android:label="ReportFragment" />
+        android:label="Report" />
     <fragment
         android:id="@+id/show_map_fragment"
         android:name="com.example.myapplication.fragment.ShowMapFragment"
-        android:label="ShowMapFragment" />
+        android:label="Map" />
+    <fragment
+        android:id="@+id/search_fragment"
+        android:name="com.example.myapplication.fragment.SearchFragment"
+        android:label="Search" />
+    <fragment
+        android:id="@+id/work_fragment"
+        android:name="com.example.myapplication.fragment.WorkFragment"
+        android:label="Work" />
+    <fragment
+        android:id="@+id/compass_fragment"
+        android:name="com.example.myapplication.fragment.CompassFragment"
+        android:label="Compass" />
 </navigation>
